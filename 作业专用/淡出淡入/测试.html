@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>第一个网页</title>
+  <style>
+    .fade-out {
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+    
+    .fade-out.fade {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="fade-out">
+    <!-- 第一个网页的内容 -->
+    <h1>第一个网页</h1>
+  </div>
+
+  <script>
+    // 在合适的时机添加 fade 类名以触发淡出效果
+    document.querySelector('.fade-out').classList.add('fade');
+    
+    // 等待淡出效果完成后，跳转到第二个网页
+    setTimeout(function() {
+      window.location.href = 'http://127.0.0.1:5500/%E6%B7%A1%E5%87%BA%E6%B7%A1%E5%85%A5/%E6%B5%8B%E8%AF%952.html';
+    }, 1000); // 1000毫秒（1秒）后跳转
+  </script>
+</body>
+</html>

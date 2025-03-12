@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>背景音乐播放示例</title>
+</head>
+<body>
+  <audio id="bg-music" src="/audio/time to love.mp3" autoplay loop></audio>
+
+  <button id="music-toggle">切换音乐</button>
+
+  <script>
+    var time =5;
+	var box = window.setInterval(tt,1000)
+	function tt(){
+		time--;
+		document.getElementById('span').innerHTML = time ; 
+		// 在合适的时机添加 fade 类名以触发淡出效果
+		document.querySelector('.fade-out').classList.add('fade');
+		if(time == 0){
+           // 等待淡出效果完成后，跳转到第二个网页
+		setTimeout(function() {
+		window.location.href = 'http://127.0.0.1:5501/3d%E5%9B%BE%E7%89%87.html';
+		}, 5000); // 1000毫秒（1秒）后跳转
+		}
+	}
+
+	
+    
+    // 等待淡出效果完成后，跳转到第二个网页
+    setTimeout(function() {
+      window.location.href = 'http://127.0.0.1:5501/3d%E5%9B%BE%E7%89%87.html';
+    }, 5000); // 1000毫秒（1秒）后跳转
+
+
+    var isMusicPlaying = true; // 音乐播放状态，默认为播放
+
+    // 页面加载完成时执行
+    window.addEventListener('load', function() {
+      var audio = document.getElementById('bg-music');
+
+      // 切换页面时执行
+      window.addEventListener('beforeunload', function() {
+        // 暂停音乐
+        if (isMusicPlaying) {
+          audio.pause();
+          audio.currentTime = 0; // 重置音乐播放位置
+        }
+      });
+
+      // 页面重新加载时执行
+      window.addEventListener('load', function() {
+        // 恢复音乐播放
+        if (isMusicPlaying) {
+          audio.play();
+        }
+      });
+    });
+
+    var musicToggle = document.getElementById('music-toggle');
+
+    musicToggle.addEventListener('click', function() {
+      var audio = document.getElementById('bg-music');
+
+      if (isMusicPlaying) {
+        audio.pause();
+        isMusicPlaying = false;
+        musicToggle.textContent = '开启音乐';
+      } else {
+        audio.play();
+        isMusicPlaying = true;
+        musicToggle.textContent = '关闭音乐';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>第二个网页</title>
+  <style>
+    .fade-in {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    
+    .fade-in.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="fade-in">
+    <!-- 第二个网页的内容 -->
+    <h1>第二个网页</h1>
+  </div>
+
+  <script>
+    // 在页面加载完成后执行淡入效果
+    window.onload = function() {
+      // 获取页面元素
+      var fadeElement = document.querySelector('.fade-in');
+      
+      // 添加 show 类名以触发淡入效果
+      fadeElement.classList.add('show');
+    };
+  </script>
+</body>
+</html>

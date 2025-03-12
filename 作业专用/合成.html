@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .page {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="page" id="page1">
+      <!-- 第一个网页的内容 -->
+      <h1>第一个网页</h1>
+      <p>这是第一个页面的内容。</p>
+    </div>
+    <div class="page" id="page2">
+      <!-- 第二个网页的内容 -->
+      <h1>第二个网页</h1>
+      <p>这是第二个页面的内容。</p>
+    </div>
+    <div class="page" id="page3">
+      <!-- 第三个网页的内容 -->
+      <h1>第三个网页</h1>
+      <p>这是第三个页面的内容。</p>
+    </div>
+  </div>
+
+  <script>
+    // 获取所有页面元素
+    var pages = document.getElementsByClassName('page');
+    var currentPageIndex = 0;
+
+    // 显示当前页面
+    function showPage(index) {
+      pages[index].style.display = 'block';
+    }
+
+    // 隐藏所有页面
+    function hideAllPages() {
+      for (var i = 0; i < pages.length; i++) {
+        pages[i].style.display = 'none';
+      }
+    }
+
+    // 切换页面
+    function switchPage() {
+      hideAllPages();
+      showPage(currentPageIndex);
+
+      // 更新当前页面索引
+      currentPageIndex++;
+      if (currentPageIndex >= pages.length) {
+        clearInterval(pageInterval);
+        showPage(pages.length - 1);
+      }
+    }
+
+    // 每隔一段时间切换页面
+    var pageInterval = setInterval(switchPage, 2000);
+  </script>
+</body>
+</html>
